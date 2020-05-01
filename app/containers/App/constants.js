@@ -1,0 +1,7 @@
+export const LOAD_REPOS = 'sp24/App/LOAD_REPOS';
+export const LOAD_REPOS_SUCCESS = 'sp24/App/LOAD_REPOS_SUCCESS';
+export const LOAD_REPOS_ERROR = 'sp24/App/LOAD_REPOS_ERROR';
+
+export const LOAD_PRODUCTS = 'sp24/App/LOAD_PRODUCTS';
+export const LOAD_PRODUCTS_SUCCESS = 'sp24/App/LOAD_PRODUCTS_SUCCESS';
+export const LOAD_PRODUCTS_ERROR = 'sp24/App/LOAD_PRODUCTS_ERROR';
