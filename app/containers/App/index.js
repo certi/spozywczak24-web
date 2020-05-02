@@ -9,8 +9,9 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import GlobalStyle from '../../global-styles';
+// import GlobalStyle from '../../global-styles';
 import PrimarySearchAppBar from "../../components/PrimarySearchAppBar";
+import './App.scss';
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -28,12 +29,22 @@ export default function App() {
         <meta name="description" content="Spożywczak 24" />
       </Helmet>
       <PrimarySearchAppBar />
+
+
+
+       {/*<div className="columns">*/}
+       {/*  <div className='columns__item'> A </div>*/}
+       {/*  <div className='columns__item'> B </div>*/}
+       {/*  <div className='columns__item'> C </div>*/}
+       {/*  <div className='columns__item'> D </div>*/}
+       {/*</div>*/}
+
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/jak_zamawiac" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
+      {/*<GlobalStyle />*/}
     </AppWrapper>
   );
 }

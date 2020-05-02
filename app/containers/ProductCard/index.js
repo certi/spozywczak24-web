@@ -19,18 +19,6 @@ import Img from "../../components/Img";
 import Button from "../../components/Button";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    float: 'left',
-    width: '45%',
-    margin: '2vmin 1vmin',
-
-    border: 'solid 1px #d9d9d9',
-    borderRadius: 5,
-    backgroundColor: 'white',
-    '-webkit-box-shadow': '1px 2px 3px 0px rgba(0,0,0,0.3)',
-    '-moz-box-shadow': '1px 2px 3px 0px rgba(0,0,0,0.3)',
-    'box-shadow': '1px 2px 3px 0px rgba(0,0,0,0.3)',
-  },
   name: {
     margin: '1vh 1vw',
     height: '8vh',

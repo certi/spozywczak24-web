@@ -1,7 +1,7 @@
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import {FormattedMessage, FormattedNumber} from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -25,6 +25,8 @@ import reducer from './reducer';
 import saga from './saga';
 
 import ProductsList from '../../components/ProductsList';
+import './Products.scss';
+import ProductListItem from "../ProductCard";
 
 const key = 'home';
 
@@ -53,7 +55,35 @@ export function HomePage({
     products,
   };
 
-  return (
+  let array = [];
+  if (products !== false) {
+
+    for (let i = 0; i < products.length; i++) {
+      let item = products[i];
+      array.push(
+        <div className="product-card">
+          <div className="product-card__aaa">
+            <div className="product-card__name">
+              <h5>{item.name}</h5>
+            </div>
+            <div className="product-card__body">
+              <div className='product-card__body__image' style={{backgroundImage: `url("${item.image}")`}} />
+              <div className="product-card__body__actions">
+                  <div className="price"><FormattedNumber value={item.price} /></div>
+                  <div className="button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" color="white">
+                      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                    </svg>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+    return (
     <article>
       <Helmet>
         <title>Spożywczak 24 - Twoje miejsce zakupów online!</title>
@@ -73,23 +103,9 @@ export function HomePage({
         </CenteredSection>
         {/*<Section>*/}
 
-        <div style={{margin: 0, height: 'calc(100vh - 80px)'}}>
-          {/*<h2>*/}
-          {/*  <FormattedMessage {...messages.findmeHeader} />*/}
-          {/*</h2>*/}
-          {/*<Form onSubmit={onSubmitForm}>*/}
-          {/*  <label htmlFor="query">*/}
-          {/*    <FormattedMessage {...messages.findmeMessage} />*/}
-          {/*    <Input*/}
-          {/*      id="query"*/}
-          {/*      type="text"*/}
-          {/*      placeholder="herbata"*/}
-          {/*      value={query}*/}
-          {/*      onChange={onChangeQuery}*/}
-          {/*    />*/}
-          {/*  </label>*/}
-          {/*</Form>*/}
-          <ProductsList {...productListProps} />
+        <div className="products">
+          {array}
+          {/*<ProductsList {...productListProps} />*/}
         {/*</Section>*/}
         </div>
       </div>

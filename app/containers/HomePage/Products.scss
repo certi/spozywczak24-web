@@ -1,0 +1,230 @@
+$breakpoints: (
+  'xs':  320px,
+  's':  767px,
+  'm': 992px,
+  'l':  1200px
+) !default;
+
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+    // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 80px);
+}
+
+.product-card {
+  margin: 1vmin;
+  border: solid 1px #d9d9d9;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  padding: 1vmin;
+  flex-grow: 1;
+  flex-basis: 33%;
+  display: flex; /* so child elements can use flexbox stuff too! */
+
+  @include respond-to('xs') {
+    flex: 1 calc(100% - 2vmin);
+  }
+  @include respond-to('s') {
+    flex: 1 calc(50% - 2vmin);
+  }
+  @include respond-to('l') {
+    flex: 1 calc(33% - 2vmin)
+  }
+
+//  &__grid {
+//    display: grid | inline-grid;
+//    grid-template-columns: 40px 50px auto 50px 40px;
+//    grid-template-rows: 25% 100px auto;
+//    grid-template-columns: 40px 50px auto 50px 40px;
+//    grid-template-rows: 25% 100px auto;
+//  }
+//
+//}
+//
+
+
+
+
+
+
+
+
+  &product-card__aaa {
+    flex:unset;
+    flex-grow: unset;
+    flex-basis: unset;
+    flex-wrap: unset;
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+
+  &__name {
+    max-width: 100%;
+    margin: 1vh 1vw;
+    height: 8vh;
+    line-height: 4vh;
+    font-size: 4vh;
+    overflow: hidden;
+    display: block;
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 200px;
+
+    div {
+      flex-grow: 1;
+      flex-basis: 50%;
+      height: 20vh;
+      display: flex;
+    }
+
+    &__image {
+      display: flex;
+      //border: solid 1px red;
+      height: 20vh;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &__actions {
+      flex-direction: column;
+      display: block;
+      flex:unset;
+
+      justify-content: right;
+      align-items: right;
+
+      //border: solid 1px green;
+      //background-color: aqua;
+
+      div {
+        border: solid 1px black;
+        flex:unset;
+        flex-basis: unset;
+        flex-grow: unset;
+        display: block !important;
+        width: 100%;
+      }
+
+      .price {
+        width: 100%;
+        color: #f90;
+        font-size: 2em;
+        text-align: right;
+      }
+
+      .button {
+        width: 50px !important;
+        height: 50px !important;
+        padding: 0;
+        margin: 0;
+        border-radius: 25px;
+        border: solid 1px #32a852;
+        background-color: #32a852;
+        text-align: center;
+
+        svg {
+          padding: 0;
+          margin: 0;
+          fill: currentColor;
+          width: 1em;
+          height: 1em;
+          display: inline-block;
+          font-size: 1.5rem;
+          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          flex-shrink: 0;
+          user-select: none;
+        }
+      }
+    }
+  }
+}
+
+
+.actions {
+  flex-direction: column;
+  display: block;
+  flex:unset;
+
+  justify-content: right;
+  align-items: right;
+
+  //border: solid 1px green;
+  //background-color: aqua;
+
+  div {
+    border: solid 1px black;
+    flex:unset;
+    flex-basis: unset;
+    flex-grow: unset;
+    display: block !important;
+    width: 100%;
+  }
+
+  .price {
+    width: 100%;
+    color: #f90;
+    font-size: 2em;
+    text-align: right;
+  }
+
+  .button {
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0;
+    margin: 0;
+    border-radius: 25px;
+    border: solid 1px #32a852;
+    background-color: #32a852;
+    text-align: center;
+
+    svg {
+      padding: 0;
+      margin: 0;
+      fill: currentColor;
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      font-size: 1.5rem;
+      transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      flex-shrink: 0;
+      user-select: none;
+    }
+  }
+}
+
+//
+//
+//.product-card__actions__add {
+//  display: block;
+//
+//  text-align: right;
+//  margin-top: 20px;
+//}
